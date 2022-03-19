@@ -9,16 +9,22 @@ public class UserInput {
 		
 		
 		while(true) {
-			System.out.println("Enter the choice: \n1. View records \n0. Quit");
+			System.out.println("\nEnter the choice: \n1. View records \n0. Quit");
 			String input = scanner.nextLine();
 		
 			switch(input) {
 			case "1":
-				System.out.println("\nYou entered 1");
+				System.out.println("You entered 1");
 				System.out.println();
+				//--Student DAO--
+				StudentDAO dao = new StudentDAO();
+				//Student object = dao.getTable();
+				dao.getTable();
+				
 				break;
 				
 			case "0":
+				System.out.println("Quitting...");
 				System.exit(0);
 				
 			default:
