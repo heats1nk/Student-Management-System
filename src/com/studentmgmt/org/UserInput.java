@@ -8,7 +8,9 @@ public class UserInput {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("\nEnter the choice: \n1. View records \n2. Enter a record \n3. Delete a record \n0. Quit");
+			System.out.println("\nEnter the choice: \n1. View records \n2. Enter a record \n3. Delete a record "
+					+ "\n4. Update a record \n0. Quit");
+			
 			String input = scanner.nextLine();
 			StudentDAO dao = new StudentDAO();
 
@@ -17,7 +19,6 @@ public class UserInput {
 				System.out.println("You entered 1");
 				System.out.println();
 				// --Student DAO--
-
 				// Student object = dao.getTable();
 				dao.connect();
 				dao.getTable();
@@ -28,8 +29,6 @@ public class UserInput {
 				System.out.println("Enter the rollno, First Name and Last Name.");
 				System.out.println();
 				//connection code
-				
-				
 				System.out.println("Enter roll number: ");
 				int rollno = Integer.valueOf(scanner.nextLine());
 				
@@ -43,8 +42,6 @@ public class UserInput {
 				Student inputStudentData = new Student(rollno, firstName, lastName);
 				dao.connect();
 				dao.addStudent(inputStudentData);
-				
-
 				break;
 				
 				
@@ -53,9 +50,22 @@ public class UserInput {
 				int inputRoll = Integer.valueOf(scanner.nextLine());
 				dao.connect();
 				dao.deleteStudent(inputRoll);
-				
-				
 				break;
+				
+				
+			case "4":
+				
+				System.out.println("Enter roll number to update: ");
+				int rollnoup = Integer.valueOf(scanner.nextLine());
+				System.out.println("Enter first name: ");
+				String firstNameup = scanner.nextLine();
+				System.out.println("Enter last name: ");
+				String lastNameup = scanner.nextLine();
+				Student studentUpdate = new Student(rollnoup, firstNameup, lastNameup);
+				dao.connect();
+				dao.updateStudent(studentUpdate);
+				break;
+				
 			case "0":
 				scanner.close();
 				System.out.println("Quitting...");

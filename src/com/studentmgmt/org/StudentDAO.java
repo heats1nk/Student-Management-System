@@ -74,4 +74,31 @@ public class StudentDAO {
 			System.out.println(e);
 		}
 	}
+	
+	//--Method to update data
+	public void updateStudent(Student s) {
+		Student student = s;
+		//String query = "Update students SET firstname =" + student.getFirstName() +", lastname = " + student.getLastName() + "WHERE rollno =" + student.getRoll();
+		String query = "Update students SET firstname = ?, lastname = ? WHERE rollno = " + student.getRoll();
+		
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, student.getFirstName());
+			pstmt.setString(2, student.getLastName());
+			int rowAffected = pstmt.executeUpdate();
+			System.out.println(rowAffected + " rows affected");
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+ 		
+		
+	}
+	
+	
+	
+	
 }
