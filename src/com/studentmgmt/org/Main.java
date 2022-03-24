@@ -6,7 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		UserInput input = new UserInput();
 		input.start();
+		
 
-	}
-
+}
 }
