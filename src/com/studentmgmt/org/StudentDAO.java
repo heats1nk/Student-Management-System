@@ -60,4 +60,18 @@ public class StudentDAO {
 			System.out.println(e);
 		}
 	}
+	
+	
+	//--Method to delete a record from database
+	public void deleteStudent(int number) {
+		String query = "DELETE from students WHERE rollno = " + number;
+		PreparedStatement pst;
+		try {
+			pst = conn.prepareStatement(query);
+			int rowAffected = pst.executeUpdate();
+			System.out.println(rowAffected + " rows were affected.");
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
 }

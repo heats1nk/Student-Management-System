@@ -8,7 +8,7 @@ public class UserInput {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("\nEnter the choice: \n1. View records \n2. Enter a record \n0. Quit");
+			System.out.println("\nEnter the choice: \n1. View records \n2. Enter a record \n3. Delete a record \n0. Quit");
 			String input = scanner.nextLine();
 			StudentDAO dao = new StudentDAO();
 
@@ -45,6 +45,16 @@ public class UserInput {
 				dao.addStudent(inputStudentData);
 				
 
+				break;
+				
+				
+			case "3":
+				System.out.println("Enter roll no. of record to be deleted");
+				int inputRoll = Integer.valueOf(scanner.nextLine());
+				dao.connect();
+				dao.deleteStudent(inputRoll);
+				
+				
 				break;
 			case "0":
 				scanner.close();
